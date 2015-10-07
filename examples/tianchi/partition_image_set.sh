@@ -4,10 +4,12 @@ myPath="/data/jixin/tianchi/eval_image"
 myBasePath="/data/jixin/tianchi"
 
 fileNum=`ls $myPath/ -l |grep "^-"|wc -l`
-if [ $# -eq 0 ]; then
-	n=$[$fileNum/10+1]
-else
+if [ $# -eq 1 ]; then
 	n=$[$fileNum/$1+1]
+	#n=$[$fileNum/10+1]
+else
+	echo "Usage: partition_image_set.sh num_group"
+	exit
 fi
 echo "batch size is $n"
 
